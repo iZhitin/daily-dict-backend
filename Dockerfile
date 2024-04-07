@@ -11,5 +11,5 @@ RUN ping pypi.org
 
 
 
-CMD ["uvicorn", "main:app", "--network", "host", "--port", "80"]
+CMD ["uvicorn", "main:app", "--network", "127.0.0.1", "--port", "80"]
 
