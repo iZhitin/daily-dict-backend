@@ -4,7 +4,7 @@ COPY . .
 
 RUN pip3 install --default-timeout 15 -r requirements.txt
 
-CMD ["uvicorn", "main:app", "--workers", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 
 #  docker build . --tag fastapi_app --network host  && docker run -p 80:80 fastapi_app
 
