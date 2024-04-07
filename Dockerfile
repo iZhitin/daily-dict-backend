@@ -3,11 +3,11 @@ FROM python:3.12-slim
 COPY . .
 
 # RUN pip3 install -r requirements.txt
-RUN ping pypy.org
-RUN ping pypy.org
-RUN ping pypy.org
-RUN ping pypy.org
-RUN ping pypy.org
+RUN ping pypi.org
+RUN ping pypi.org
+RUN ping pypi.org
+RUN ping pypi.org
+RUN ping pypi.org
 
 
 
