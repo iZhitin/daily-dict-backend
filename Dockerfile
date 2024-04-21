@@ -4,8 +4,11 @@ COPY . .
 
 RUN pip3 install --default-timeout 15 -r requirements.txt
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+# С POSTGRESQL
+# 5432
 
+# С UVICORN
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
 # TODO: ЭТО ВСЕ В ДОКУ
 # Для деплоя:
 # 1) Авторизация на серваке: ssh root@95.163.231.19 (затем ввести пароль), либо авторизоваться другим способом
