@@ -9,7 +9,7 @@ import asyncpg
 # )
 
 # DATABASE_URL = "postgresql://user:password@host:port/database"
-DATABASE_URL = "postgresql+asyncpg://izhitin:Qwerty_386@95.163.231.19:5432/dd_db"
+DATABASE_URL = "postgresql+asyncpg://izhitin:Qwerty_386@0.0.0.0:5432/dd_db"
 
 engine = create_async_engine(DATABASE_URL)
 
