@@ -3,13 +3,15 @@ from typing import Optional
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 import asyncpg
+import os
 
 # engine = create_async_engine(
 #     "sqlite+aiosqlite:///tasks.db"  # можно развернуть на сервере
 # )
 
 # DATABASE_URL = "postgresql://user:password@host:port/database"
-DATABASE_URL = "postgresql+asyncpg://izhitin:Qwerty_386@0.0.0.0:5432/dd_db"
+external_ip = os.environ.get("127.0.0.1")
+DATABASE_URL = f"postgresql+asyncpg://izhitin:Qwerty_386@{external_ip}:5432/dd_db"
 
 engine = create_async_engine(DATABASE_URL)
 
