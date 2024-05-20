@@ -10,8 +10,11 @@ import os
 # )
 
 # DATABASE_URL = "postgresql://user:password@host:port/database"
+
+# Ничего не получается, скорее всего нужно разворачиваться базу в докере и использовать docker compose
 external_ip = os.environ.get("127.0.0.1")
-DATABASE_URL = f"postgresql+asyncpg://izhitin:Qwerty_386@{external_ip}:5432/dd_db"
+external_ip = "postgres"
+DATABASE_URL = f"postgresql+asyncpg://postgres:Qwerty_386@{external_ip}:5432/dd_db"
 
 engine = create_async_engine(DATABASE_URL)
 

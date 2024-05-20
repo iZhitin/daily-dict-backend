@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:14.5
+    container_name: project_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Qwerty_386
+      POSTGRES_DB: dd_db
+    ports:
+      - "5432:5432"
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+  fastapi:
+    build:
+      context: src/
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:Qwerty_386@postgres:5432/dd_db
+
+volumes:
+  pgdata:

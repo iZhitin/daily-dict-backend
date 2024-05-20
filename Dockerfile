@@ -1,22 +1,11 @@
-FROM python:3.12-slim
+FROM postgres:14.5
 
-COPY . .
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=Qwerty_386
+ENV POSTGRES_DB=dd_db
 
-RUN pip3 install --default-timeout 15 -r requirements.txt
+# Копируем файл с SQL скриптом для инициализации базы данных (опционально)
+COPY init.sql /docker-entrypoint-initdb.d/
 
-# С POSTGRESQL
-# 5432
-
-# С UVICORN
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
-# TODO: ЭТО ВСЕ В ДОКУ
-# Для деплоя:
-# 1) Авторизация на серваке: ssh root@95.163.231.19 (затем ввести пароль), либо авторизоваться другим способом
-# 2) Установка докера в 2-3 команды с сайта (можно разбить, если не получается): https://docs.docker.com/engine/install/ubuntu/
-# 3) Проверка установки: docker
-# 4) Установка git: sudo apt-get install git
-# 5) Проверка установки: git
-# 6) Клонирование публичного репозитория: git clone https://github.com/iZhitin/daily-dict-backend.git
-# 7) Смена директории: cd daily-dict-backend
-# 8) Сам деплой: docker build . --tag fastapi_app --network host  && docker run -p 80:80 fastapi_app
-
+# Запускаем PostgreSQL
+CMD ["postgres"]
