@@ -38,3 +38,12 @@ networks:
   api_network:
     external: true
     driver: bridge
+
+
+
+
+
+
+
+environment:
+    DATABASE_URL: postgresql://postgres:Qwerty_386@postgres:5432/dd_db

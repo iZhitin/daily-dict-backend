@@ -10,19 +10,27 @@ services:
       POSTGRES_DB: dd_db
     ports:
       - "5432:5432"
+    networks:
+      - api_network
     restart: always
     volumes:
       - pgdata:/var/lib/postgresql/data
+
   fastapi:
     build:
       context: src/
       dockerfile: Dockerfile
     depends_on:
       - postgres
+    networks:
+      - api_network
     ports:
       - "8000:8000"
-    environment:
-      DATABASE_URL: postgresql://postgres:Qwerty_386@postgres:5432/dd_db
 
 volumes:
   pgdata:
+
+networks:
+  api_network:
+    external: true
+    driver: bridge
